@@ -56,6 +56,7 @@
             this.luna = new System.Windows.Forms.TextBox();
             this.an = new System.Windows.Forms.TextBox();
             this.Verificare = new System.Windows.Forms.Button();
+            this.btnlista = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblnume
@@ -312,11 +313,22 @@
             this.Verificare.UseVisualStyleBackColor = true;
             this.Verificare.Click += new System.EventHandler(this.Verificare_Click);
             // 
+            // btnlista
+            // 
+            this.btnlista.Location = new System.Drawing.Point(660, 54);
+            this.btnlista.Name = "btnlista";
+            this.btnlista.Size = new System.Drawing.Size(91, 48);
+            this.btnlista.TabIndex = 32;
+            this.btnlista.Text = "Lista elevi";
+            this.btnlista.UseVisualStyleBackColor = true;
+            this.btnlista.Click += new System.EventHandler(this.btnlista_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnlista);
             this.Controls.Add(this.Verificare);
             this.Controls.Add(this.an);
             this.Controls.Add(this.luna);
@@ -383,6 +395,7 @@
         private System.Windows.Forms.TextBox luna;
         private System.Windows.Forms.TextBox an;
         private System.Windows.Forms.Button Verificare;
+        private System.Windows.Forms.Button btnlista;
     }
 }
 

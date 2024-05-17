@@ -8,8 +8,8 @@ namespace catalogonline
 {
     internal class date
     {
-        string nume, prenume, mama, tata, clasa, email,litera,cnp;
-        int telefon,zi,an,luna;
+        string nume, prenume, mama, tata, clasa, email,litera,cnp, zi, an, luna;
+        int telefon;
         public string getNume()
         { 
             return nume;
@@ -106,6 +106,39 @@ namespace catalogonline
         public void setcnp(string c)
         {
             cnp = c;
+
+        }
+        public string getzi()
+        {
+
+            return zi;
+
+        }
+        public void setzi(string zii)
+        {
+            zi = zii;
+
+        }
+        public string getluna()
+        {
+
+            return luna;
+
+        }
+        public void setluna(string lunaa)
+        {
+            luna = lunaa;
+
+        }
+        public string getan()
+        {
+
+            return an;
+
+        }
+        public void setan(string ann)
+        {
+            an = ann;
 
         }
     }

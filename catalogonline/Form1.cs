@@ -14,9 +14,9 @@ namespace catalogonline
 {
     public partial class Form1 : Form
     {
-        int cnt = 0;
+        int cnt = 1;
        date []elevi= new date[10];
-        string path = @"C:\Users\elev\source\repos\catalogonline\catalogonline\";
+        string path = @"C:\Users\elev\source\repos\hanna-balarau\catalogonline2\catalogonline\";
 
 
         public Form1()
@@ -28,7 +28,9 @@ namespace catalogonline
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            StreamReader p=new StreamReader(path+"TextFile2.txt");
+            cnt=Convert.ToInt32(p.ReadLine());
+            p.Close();
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -43,7 +45,7 @@ namespace catalogonline
 
         private void submit_Click(object sender, EventArgs e)
         {
-            //StreamWriter w = new StreamWriter(path + "TextFile1.txt");
+           StreamWriter w = new StreamWriter(path + "TextFile2.txt");
             elevi[cnt] = new date();
             elevi[cnt].setNume(textBoxnume.Text.ToString());
             elevi[cnt].setPren(textBoxpren.Text.ToString());
@@ -54,12 +56,30 @@ namespace catalogonline
             elevi[cnt].setlitera(comboBoxlitera.Text.ToString());
             elevi[cnt].setTel(Convert.ToInt32(textBoxtelefon.Text.ToString()));
             elevi[cnt].setMail(textBoxemail.Text.ToString());
+            elevi[cnt].setzi(zi.Text.ToString());
+            elevi[cnt].setluna(luna.Text.ToString());
+            elevi[cnt].setan(an.Text.ToString());
+
             MessageBox.Show("Ai introdus corect!");
-           // w.WriteLine(cnt.ToString() + "|" + elevi[cnt].getNume() + "|" + elevi[cnt].getPren() + "|" + elevi[cnt].getMama() + "|" + elevi[cnt].getTata() + "|" + elevi[cnt].getcnp() + "|" + elevi[cnt].getClasa() + "|" + elevi[cnt].getlitera() + "|" + elevi[cnt].getTel() + "|" + elevi[cnt].getMail());
+           cnt++;
+            File.AppendAllText(path + "TextFile1.txt", cnt.ToString() + "|" + elevi[cnt].getNume() + "|" + elevi[cnt].getPren() + "|" + elevi[cnt].getMama() + "|" + elevi[cnt].getTata() + "|" + elevi[cnt].getcnp() + "|" + elevi[cnt].getzi() + "|" + elevi[cnt].getluna() + "|" + elevi[cnt].getan() + "|" + elevi[cnt].getClasa() + "|" + elevi[cnt].getlitera() + "|" + elevi[cnt].getTel() + "|" + elevi[cnt].getMail() +'\n');
             
-            //w.Close();
-            File.AppendAllText(path + "TextFile1.txt", cnt.ToString() + "|" + elevi[cnt].getNume() + "|" + elevi[cnt].getPren() + "|" + elevi[cnt].getMama() + "|" + elevi[cnt].getTata() + "|" + elevi[cnt].getcnp() + "|" + elevi[cnt].getClasa() + "|" + elevi[cnt].getlitera() + "|" + elevi[cnt].getTel() + "|" + elevi[cnt].getMail()+'\n');
-             cnt++;
+            
+            w.WriteLine(cnt);
+            w.Close();
+            textBoxcnp.Text = null;
+            textBoxmama.Text = null;
+            textBoxtata.Text = null;
+            textBoxnume.Text = null;
+            textBoxpren.Text = null;
+            textBoxemail.Text = null;
+            textBoxtelefon.Text = null;
+            zi.Text = null;
+            an.Text = null;
+            luna.Text = null;
+            comboBoxclasa.Text = null;
+            comboBoxlitera.Text = null; 
+
 
 
 
@@ -93,7 +113,7 @@ namespace catalogonline
             int x = 0;
             for(int i=0;i<12;i++)
             {
-                x += (Convert.ToInt32(chars[i]) - '0') + y[i];
+                x += (Convert.ToInt32(chars[i]) - '0') * y[i];
 
             }
             int cif_control = x % 11;
@@ -107,6 +127,16 @@ namespace catalogonline
                 gen.Text = "Masculin";
             if (chars[0]=='6')
                 gen.Text = "Feminin";
+            luna.Text = chars[3].ToString() + chars[4].ToString();
+            an.Text = "20" + chars[1].ToString() + chars[2].ToString();
+            zi.Text = chars[5].ToString() + chars[6].ToString();
+        }
+
+        private void btnlista_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new Form2();
+            form2.ShowDialog();
         }
     }
 }
